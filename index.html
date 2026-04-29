@@ -786,13 +786,10 @@
   }
 
   .tei-footer-logos .extend-logo {
-    font-size: 2rem;
-    font-weight: 950;
-    line-height: 1;
-    background: linear-gradient(90deg, #e63b35, #f3b21a, #39a852, #1d89e4, #7c3ff2);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    display: block;
+    width: 8.8rem;
+    height: auto;
+    flex: 0 0 auto;
   }
 
   .tei-footer small {
@@ -1236,7 +1233,27 @@
       <img class="bdfi-logo" src="assets/tei-seminar/bdfi-logo-transparent.png" alt="Bristol Digital Futures Institute">
       <img class="smart-logo" src="assets/tei-seminar/smart-internet-lab-transparent.png" alt="Smart Internet Lab">
       <img class="hkust-logo" src="assets/tei-seminar/hkustgz-logo-final.png" alt="The Hong Kong University of Science and Technology (Guangzhou)">
-      <span class="extend-logo" aria-label="EXTEND Lab">EXTEND</span>
+      <svg class="extend-logo" viewBox="0 0 388 80" role="img" aria-label="EXTEND Lab" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="extendFooterGradient" x1="0" y1="0" x2="388" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#e63b35"/>
+            <stop offset="0.24" stop-color="#f3b21a"/>
+            <stop offset="0.45" stop-color="#39a852"/>
+            <stop offset="0.68" stop-color="#1d89e4"/>
+            <stop offset="1" stop-color="#7c3ff2"/>
+          </linearGradient>
+        </defs>
+        <g fill="url(#extendFooterGradient)">
+          <path d="M0 8h52v12H12v14h34v12H12v14h40v12H0z"/>
+          <path d="M64 8h17l13 22 13-22h17l-22 32 22 32h-17L94 50 81 72H64l22-32z"/>
+          <path d="M136 8h56v12h-22v52h-12V20h-22z"/>
+          <path d="M204 8h52v12h-40v14h34v12h-34v14h40v12h-52z"/>
+          <path d="M268 8h12v64h-12z"/>
+          <path d="M304 8h12v64h-12z"/>
+          <path d="M280 8h14l22 64h-14z"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M328 8h21c20 0 35 14 35 32s-15 32-35 32h-21zm12 12v40h8c13 0 23-8 23-20s-10-20-23-20z"/>
+        </g>
+      </svg>
     </div>
     <strong>TEI 2026</strong> | The 1st Seminar of Towards Edge Intelligence
     <small>Organization team: Smart Internet Lab and BDFI, University of Bristol. EXTEND Lab, HKUST(GZ).</small>
