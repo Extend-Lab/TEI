@@ -118,6 +118,50 @@
     pointer-events: none;
   }
 
+  .poster-hero-bg {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 118mm;
+    z-index: 0;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.7)),
+      url("assets/tei-seminar/hero.png") top center / 100% auto no-repeat;
+    pointer-events: none;
+  }
+
+  .poster-hero-bg::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8mm;
+    height: 34mm;
+    background:
+      linear-gradient(
+        rgba(249, 252, 255, 0) 0%,
+        rgba(249, 252, 255, 0.2) 34%,
+        rgba(249, 252, 255, 0.68) 68%,
+        rgba(249, 252, 255, 0.96) 100%
+      ),
+      radial-gradient(
+        ellipse at 50% 15%,
+        rgba(255, 255, 255, 0.16),
+        rgba(255, 255, 255, 0) 62%
+      );
+    backdrop-filter: blur(0.7mm);
+    -webkit-backdrop-filter: blur(0.7mm);
+    mask-image: linear-gradient(
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.8) 24%,
+      #000 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.8) 24%,
+      #000 100%
+    );
+  }
+
   .globe {
     position: absolute;
     top: 13mm;
@@ -158,11 +202,17 @@
   }
 
   .logo-row {
+    display: grid;
+    gap: 1.2mm;
+    align-items: start;
+    width: 118mm;
+    margin-bottom: 2mm;
+  }
+
+  .logo-line {
     display: flex;
     align-items: center;
-    gap: 5mm;
-    height: 11.6mm;
-    margin-bottom: 2.2mm;
+    gap: 4mm;
   }
 
   .logo-row img {
@@ -174,8 +224,28 @@
     width: 35mm;
   }
 
+  .logo-row .bdfi {
+    width: 12mm;
+  }
+
+  .logo-row .smart {
+    width: 33mm;
+  }
+
   .logo-row .hkust {
-    width: 50mm;
+    width: 48mm;
+  }
+
+  .extend-logo {
+    font-size: 7mm;
+    font-weight: 950;
+    line-height: 1;
+    letter-spacing: 0;
+    background: linear-gradient(90deg, #e63b35, #f3b21a, #39a852, #1d89e4, #7c3ff2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 1.3mm 2mm rgba(6, 36, 91, 0.16));
   }
 
   .ribbon {
@@ -193,7 +263,7 @@
 
   h1 {
     width: 150mm;
-    margin: 1.7mm 0 2.2mm;
+    margin: 5.2mm 0 2.4mm;
     color: var(--navy);
     line-height: 1.04;
     letter-spacing: 0;
@@ -202,23 +272,29 @@
 
   .title-main {
     display: block;
-    font-size: 12.9mm;
+    font-size: 14mm;
     white-space: nowrap;
   }
 
   .title-sub {
     display: block;
-    width: 145mm;
-    margin-top: 1.25mm;
-    font-size: 7.75mm;
+    width: 186mm;
+    margin-top: 3.5mm;
+    font-size: 8.35mm;
     line-height: 1.04;
+  }
+
+  .title-sub .line {
+    display: block;
+    white-space: nowrap;
   }
 
   .facts {
     display: grid;
-    grid-template-columns: 51mm 87mm 40mm;
+    grid-template-columns: 51mm 84mm 43mm;
     gap: 4mm;
     width: 192mm;
+    margin-top: 12mm;
     margin-bottom: 2.1mm;
   }
 
@@ -264,6 +340,10 @@
     color: var(--navy);
     font-size: 3.55mm;
     line-height: 1.35;
+  }
+
+  .fact:nth-child(3) span {
+    white-space: nowrap;
   }
 
   .section-title {
@@ -363,6 +443,7 @@
     grid-template-columns: minmax(0, 1fr) 39mm;
     gap: 2mm;
     align-items: stretch;
+    margin-top: 4mm;
     margin-bottom: 10mm;
   }
 
@@ -450,6 +531,15 @@
     color: var(--navy);
     font-size: 2.85mm;
     font-style: italic;
+  }
+
+  .agenda-website {
+    padding: 1.2mm 1.8mm 1.45mm;
+    color: var(--navy);
+    font-size: 3.05mm;
+    font-weight: 850;
+    line-height: 1.2;
+    text-align: center;
   }
 
   .poster-call {
@@ -545,9 +635,9 @@
 
   .organized {
     position: absolute;
-    left: 9mm;
-    right: 9mm;
-    bottom: 1.8mm;
+    left: 34mm;
+    right: 34mm;
+    bottom: 4mm;
     z-index: 3;
     display: flex;
     justify-content: center;
@@ -559,8 +649,8 @@
 
   .contact {
     display: grid;
-    grid-template-columns: 65mm 1fr 1fr;
-    gap: 3mm;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5mm;
     align-items: center;
     width: 100%;
     color: var(--navy);
@@ -635,6 +725,7 @@
   </div>
 
   <main class="poster-sheet" aria-label="TEI promotion poster">
+    <div class="poster-hero-bg" aria-hidden="true"></div>
     <div class="globe" aria-hidden="true">
       <i class="bi bi-wifi"></i>
       <i class="bi bi-cpu"></i>
@@ -643,21 +734,32 @@
 
     <div class="poster-content">
       <div class="logo-row">
-        <img class="uob" src="assets/tei-seminar/university-of-bristol-logo-cropped.png" alt="University of Bristol">
-        <img class="hkust" src="assets/tei-seminar/hkustgz-logo-final.png" alt="The Hong Kong University of Science and Technology (Guangzhou)">
+        <div class="logo-line">
+          <img class="uob" src="assets/tei-seminar/university-of-bristol-logo-cropped.png" alt="University of Bristol">
+          <img class="bdfi" src="assets/tei-seminar/bdfi-logo-transparent.png" alt="Bristol Digital Futures Institute">
+          <img class="smart" src="assets/tei-seminar/smart-internet-lab-transparent.png" alt="Smart Internet Lab">
+        </div>
+        <div class="logo-line">
+          <img class="hkust" src="assets/tei-seminar/hkustgz-logo-final.png" alt="The Hong Kong University of Science and Technology (Guangzhou)">
+          <div class="extend-logo" aria-label="EXTEND Lab">EXTEND</div>
+        </div>
       </div>
 
       <div class="ribbon">The 1st Seminar of Towards Edge Intelligence (TEI)</div>
 
       <h1>
         <span class="title-main">Towards Edge Intelligence</span>
-        <span class="title-sub">Context-aware and Multi-agent<br>Approaches for Sensing, Computation<br>and&nbsp;Communication</span>
+        <span class="title-sub">
+          <span class="line">Context-aware and Multi-agent</span>
+          <span class="line">Approaches for Sensing, Computation</span>
+          <span class="line">and&nbsp;Communication</span>
+        </span>
       </h1>
 
       <section class="facts" aria-label="Seminar information">
         <div class="fact"><i class="bi bi-calendar3"></i><div><strong>29 May 2026</strong><span>Friday</span></div></div>
         <div class="fact"><i class="bi bi-geo-alt-fill"></i><div><strong>BDFI, University of Bristol, UK</strong><span>65 Avon St, Bristol BS2 0PZ</span></div></div>
-        <div class="fact"><i class="bi bi-display"></i><div><strong>Hybrid Format</strong><span>In person at Bristol and online via Zoom</span></div></div>
+        <div class="fact"><i class="bi bi-display"></i><div><strong>Hybrid Format</strong><span>In person at Bristol<br>and online via Zoom</span></div></div>
       </section>
 
       <div class="section-title"><span>Invited Speakers</span></div>
@@ -671,29 +773,11 @@
         <div class="speaker"><img src="assets/tei-seminar/juan-marcelo-parra-ullauri.jpeg" alt="Dr. Juan Marcelo Parra Ullauri" loading="eager" decoding="sync"><strong>Dr. Juan Marcelo Parra Ullauri</strong><span>BT Group / University of Bristol</span></div>
       </section>
 
-      <section class="panel call-panel">
-        <div class="panel-head">Call for Posters - PhD Students</div>
-        <div class="poster-call">
-          <p>We invite PhD students to present their research through posters and engage with the TEI community.</p>
-          <div class="benefits">
-            <div class="benefit"><i class="bi bi-easel2"></i><strong>Present<br>Your Research</strong></div>
-            <div class="benefit"><i class="bi bi-diagram-3"></i><strong>Network with<br>Experts</strong></div>
-            <div class="benefit"><i class="bi bi-lightbulb"></i><strong>Gain<br>Visibility</strong></div>
-            <div class="benefit"><i class="bi bi-award"></i><strong>Selected posters<br>featured</strong></div>
-          </div>
-          <div class="deadline-box">
-            <strong>Submission Deadline<br>18th May 2026</strong>
-            <span>Poster capacity: 15 posters.</span>
-          </div>
-          <p class="poster-guideline">For detailed submission guidelines, please find our website: https://extend-lab.github.io/TEI/</p>
-        </div>
-      </section>
-
       <section class="agenda-block" aria-label="Agenda and seminar hosts">
         <div class="panel agenda-panel">
           <div class="panel-head">Agenda <small>(Tentative)</small></div>
           <div class="agenda-row"><div>08:45</div><div>Registration, refreshments</div><div>Organizing team</div></div>
-          <div class="agenda-row"><div>09:20</div><div>Welcome remarks</div><div>Seminar Hosts</div></div>
+          <div class="agenda-row"><div>09:20</div><div>Welcome remarks</div><div>Seminar Hosts and BDFI</div></div>
           <div class="agenda-row session">Morning Session</div>
           <div class="agenda-row"><div>09:30</div><div>Keynote 1</div><div>Prof. Dimitra Simeonidou</div></div>
           <div class="agenda-row"><div>10:15</div><div>Keynote 2</div><div>Prof. Walid Saad</div></div>
@@ -706,6 +790,7 @@
           <div class="agenda-row"><div>15:30</div><div>Keynote 6</div><div>Dr. Juan Marcelo Parra Ullauri</div></div>
           <div class="agenda-row"><div>16:15</div><div>Closing remarks, networking</div><div>Seminar Hosts</div></div>
           <div class="agenda-note">*Agenda is subject to change.</div>
+          <div class="agenda-website">For more details, please find the website: https://extend-lab.github.io/TEI/</div>
         </div>
 
         <div class="agenda-hosts">
@@ -723,7 +808,6 @@
 
     <section class="organized">
       <div class="contact">
-        <div><i class="bi bi-globe2"></i><span><strong>Website:</strong> https://extend-lab.github.io/TEI/</span></div>
         <div><i class="bi bi-envelope"></i><span><strong>Email:</strong> xiaolan.liu@bristol.ac.uk</span></div>
         <div><i class="bi bi-envelope"></i><span><strong>Email:</strong> jiadongyu@hkust-gz.edu.cn</span></div>
       </div>

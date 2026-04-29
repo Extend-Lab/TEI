@@ -197,10 +197,19 @@
     right: 2rem;
     z-index: 2;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-end;
-    gap: 1rem;
-    max-width: min(38rem, calc(100% - 4rem));
+    gap: 0.45rem;
+    width: min(38rem, calc(100% - 4rem));
+  }
+
+  .tei-logo-line {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.8rem;
+    width: 100%;
   }
 
   .tei-hero-logo-card {
@@ -220,8 +229,28 @@
     width: clamp(7.6rem, 10vw, 9rem);
   }
 
+  .tei-hero-logo-card.bdfi img {
+    width: clamp(3.2rem, 5vw, 4.3rem);
+  }
+
+  .tei-hero-logo-card.smart img {
+    width: clamp(7rem, 9vw, 9.2rem);
+  }
+
   .tei-hero-logo-card.hkust img {
     width: clamp(11.2rem, 15vw, 14rem);
+  }
+
+  .tei-extend-logo {
+    font-size: clamp(1.4rem, 2.2vw, 2.15rem);
+    font-weight: 950;
+    line-height: 1;
+    letter-spacing: 0;
+    background: linear-gradient(90deg, #e63b35, #f3b21a, #39a852, #1d89e4, #7c3ff2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 8px 14px rgba(8, 36, 66, 0.16));
   }
 
   .tei-hero-grid {
@@ -265,6 +294,7 @@
   .tei-fact-panel {
     display: grid;
     gap: 0.78rem;
+    margin-top: 2.2rem;
     padding: 1.1rem;
     border: 1px solid rgba(0, 87, 167, 0.16);
     border-top: 5px solid var(--blue);
@@ -724,6 +754,47 @@
     color: #0d355f;
   }
 
+  .tei-footer-logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .tei-footer-logos img {
+    display: block;
+    max-height: 3.6rem;
+    object-fit: contain;
+  }
+
+  .tei-footer-logos .uob-logo {
+    width: 8.2rem;
+  }
+
+  .tei-footer-logos .bdfi-logo {
+    width: 3.6rem;
+  }
+
+  .tei-footer-logos .smart-logo {
+    width: 8.8rem;
+  }
+
+  .tei-footer-logos .hkust-logo {
+    width: 13rem;
+  }
+
+  .tei-footer-logos .extend-logo {
+    font-size: 2rem;
+    font-weight: 950;
+    line-height: 1;
+    background: linear-gradient(90deg, #e63b35, #f3b21a, #39a852, #1d89e4, #7c3ff2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   .tei-footer small {
     display: block;
     margin-top: 0.55rem;
@@ -837,6 +908,10 @@
       justify-content: center;
     }
 
+    .tei-logo-line {
+      justify-content: center;
+    }
+
     .tei-card-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -862,6 +937,10 @@
       align-items: center;
       flex-direction: column;
       gap: 0.55rem;
+    }
+
+    .tei-logo-line {
+      flex-wrap: wrap;
     }
 
     .tei-hero-logo-card.uob img {
@@ -943,10 +1022,6 @@
             <div class="tei-fact"><i class="bi bi-people-fill"></i><span><strong>6 keynotes + 15 posters</strong>Talks, poster sessions and networking</span></div>
           </aside>
         </div>
-      </div>
-        <div class="tei-hero-logos" aria-label="Host institutions">
-          <div class="tei-hero-logo-card uob"><img src="assets/tei-seminar/university-of-bristol-logo-cropped.png" alt="University of Bristol"></div>
-        <div class="tei-hero-logo-card hkust"><img src="assets/tei-seminar/hkustgz-logo-final.png" alt="The Hong Kong University of Science and Technology (Guangzhou)"></div>
       </div>
     </section>
 
@@ -1046,7 +1121,7 @@
           <div class="tei-session-agenda">
             <div class="tei-session-title pre">Arrival and Welcome <span>Seminar Hosts</span></div>
             <div class="tei-agenda-row"><div class="tei-time">08:45</div><div class="tei-topic">Registration and refreshments</div><div class="tei-who">Organizing team</div></div>
-            <div class="tei-agenda-row"><div class="tei-time">09:20</div><div class="tei-topic">Welcome remarks</div><div class="tei-who">Seminar Hosts</div></div>
+            <div class="tei-agenda-row"><div class="tei-time">09:20</div><div class="tei-topic">Welcome remarks</div><div class="tei-who">Seminar Hosts and BDFI</div></div>
           </div>
           <div></div>
 
@@ -1156,8 +1231,15 @@
   </dialog>
 
   <footer class="tei-footer">
+    <div class="tei-footer-logos" aria-label="Host institution and laboratory logos">
+      <img class="uob-logo" src="assets/tei-seminar/university-of-bristol-logo-cropped.png" alt="University of Bristol">
+      <img class="bdfi-logo" src="assets/tei-seminar/bdfi-logo-transparent.png" alt="Bristol Digital Futures Institute">
+      <img class="smart-logo" src="assets/tei-seminar/smart-internet-lab-transparent.png" alt="Smart Internet Lab">
+      <img class="hkust-logo" src="assets/tei-seminar/hkustgz-logo-final.png" alt="The Hong Kong University of Science and Technology (Guangzhou)">
+      <span class="extend-logo" aria-label="EXTEND Lab">EXTEND</span>
+    </div>
     <strong>TEI 2026</strong> | The 1st Seminar of Towards Edge Intelligence
-    <small>Organization team: BDFI, University of Bristol. EXTEND Lab, HKUST(GZ). Contact: Xiaolan.liu@bristol.ac.uk. Jiadongyu@hkust-gz.edu.cn.</small>
+    <small>Organization team: Smart Internet Lab and BDFI, University of Bristol. EXTEND Lab, HKUST(GZ).</small>
   </footer>
   <script>
     document.querySelectorAll("[data-modal-target]").forEach((button) => {
