@@ -192,16 +192,13 @@
   }
 
   .tei-hero-logos {
-    position: absolute;
-    top: 1.25rem;
-    right: 2rem;
-    z-index: 2;
     display: flex;
-    flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-end;
-    gap: 0.45rem;
-    width: min(38rem, calc(100% - 4rem));
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    width: min(56rem, 100%);
+    margin-bottom: 1rem;
   }
 
   .tei-logo-line {
@@ -226,19 +223,19 @@
   }
 
   .tei-hero-logo-card.uob img {
-    width: clamp(7.6rem, 10vw, 9rem);
+    width: clamp(7rem, 9vw, 8.5rem);
   }
 
   .tei-hero-logo-card.bdfi img {
-    width: clamp(3.2rem, 5vw, 4.3rem);
+    width: clamp(2.7rem, 4vw, 3.4rem);
   }
 
   .tei-hero-logo-card.smart img {
-    width: clamp(7rem, 9vw, 9.2rem);
+    width: clamp(6.4rem, 8vw, 8rem);
   }
 
   .tei-hero-logo-card.hkust img {
-    width: clamp(11.2rem, 15vw, 14rem);
+    width: clamp(10rem, 13vw, 12.5rem);
   }
 
   .tei-extend-logo {
@@ -754,44 +751,6 @@
     color: #0d355f;
   }
 
-  .tei-footer-logos {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 1.1rem;
-    margin-bottom: 1.2rem;
-  }
-
-  .tei-footer-logos img {
-    display: block;
-    max-height: 3.6rem;
-    object-fit: contain;
-  }
-
-  .tei-footer-logos .uob-logo {
-    width: 8.2rem;
-  }
-
-  .tei-footer-logos .bdfi-logo {
-    width: 3.6rem;
-  }
-
-  .tei-footer-logos .smart-logo {
-    width: 8.8rem;
-  }
-
-  .tei-footer-logos .hkust-logo {
-    width: 13rem;
-  }
-
-  .tei-footer-logos .extend-logo {
-    display: block;
-    width: 8.8rem;
-    height: auto;
-    flex: 0 0 auto;
-  }
-
   .tei-footer small {
     display: block;
     margin-top: 0.55rem;
@@ -884,7 +843,7 @@
 
     .tei-hero {
       min-height: auto;
-      padding-top: 7rem;
+      padding-top: 5rem;
     }
 
     .tei-hero-grid,
@@ -894,19 +853,6 @@
     .tei-venue-grid,
     .tei-host-grid {
       grid-template-columns: 1fr;
-    }
-
-    .tei-hero-logos {
-      left: 1rem;
-      right: 1rem;
-      top: 1rem;
-      bottom: auto;
-      max-width: none;
-      justify-content: center;
-    }
-
-    .tei-logo-line {
-      justify-content: center;
     }
 
     .tei-card-grid {
@@ -926,13 +872,9 @@
       width: 100%;
     }
 
-    .tei-hero {
-      padding-top: 9.5rem;
-    }
-
     .tei-hero-logos {
       align-items: center;
-      flex-direction: column;
+      justify-content: center;
       gap: 0.55rem;
     }
 
@@ -1003,6 +945,13 @@
       <div class="tei-hero-inner">
         <div class="tei-hero-grid">
           <div>
+            <div class="tei-hero-logos" aria-label="Host institution and laboratory logos">
+              <span class="tei-hero-logo-card uob"><img src="assets/tei-seminar/university-of-bristol-logo-cropped.png" alt="University of Bristol"></span>
+              <span class="tei-hero-logo-card bdfi"><img src="assets/tei-seminar/bdfi-logo-transparent.png" alt="Bristol Digital Futures Institute"></span>
+              <span class="tei-hero-logo-card smart"><img src="assets/tei-seminar/smart-internet-lab-transparent.png" alt="Smart Internet Lab"></span>
+              <span class="tei-hero-logo-card hkust"><img src="assets/tei-seminar/hkustgz-logo-final.png" alt="The Hong Kong University of Science and Technology (Guangzhou)"></span>
+              <span class="tei-extend-logo" aria-label="EXTEND Lab">EXTEND</span>
+            </div>
             <p class="tei-kicker"><i class="bi bi-cpu"></i> The 1st Seminar of Towards Edge Intelligence</p>
             <h1>Towards Edge Intelligence</h1>
             <p class="tei-hero-subtitle">Context-aware and multi-agent approaches for sensing, computation and communication.</p>
@@ -1015,7 +964,7 @@
           <aside class="tei-fact-panel" aria-label="Event facts">
             <div class="tei-fact"><i class="bi bi-calendar-event"></i><span><strong>29 May 2026</strong>Friday</span></div>
             <div class="tei-fact"><i class="bi bi-geo-alt-fill"></i><span><strong>BDFI, University of Bristol</strong>65 Avon St, Bristol, UK BS2 0PZ</span></div>
-            <div class="tei-fact"><i class="bi bi-display"></i><span><strong>Hybrid format</strong>In person at Bristol and online via Zoom</span></div>
+            <div class="tei-fact"><i class="bi bi-building"></i><span><strong>In-person format</strong>In person at Bristol</span></div>
             <div class="tei-fact"><i class="bi bi-people-fill"></i><span><strong>6 keynotes + 15 posters</strong>Talks, poster sessions and networking</span></div>
           </aside>
         </div>
@@ -1036,7 +985,7 @@
           <div class="tei-stat-grid">
             <div class="tei-stat"><strong>6</strong><span>Invited keynote speakers from leading universities and industry labs.</span></div>
             <div class="tei-stat"><strong>15</strong><span>Poster slots for PhD students working on related topics.</span></div>
-            <div class="tei-stat"><strong>1</strong><span>Hybrid seminar day at Bristol and online via Zoom.</span></div>
+            <div class="tei-stat"><strong>1</strong><span>In-person seminar day at Bristol.</span></div>
           </div>
         </div>
       </div>
@@ -1111,7 +1060,7 @@
           <p class="tei-label">Program</p>
           <div>
             <h2>Seminar Agenda</h2>
-            <p>A full-day hybrid program with keynote sessions, poster presentation windows, breaks and networking.</p>
+            <p>A full-day in-person program with keynote sessions, poster presentation windows, breaks and networking.</p>
           </div>
         </div>
         <div class="tei-program-grid">
@@ -1181,7 +1130,7 @@
           <p class="tei-label">Venue</p>
           <div>
             <h2>BDFI, University of Bristol</h2>
-            <p>The in-person seminar will take place in Bristol, with a public online Zoom option for remote participants.</p>
+            <p>The seminar will take place in person at Bristol Digital Futures Institute.</p>
           </div>
         </div>
         <div class="tei-venue-grid">
@@ -1228,33 +1177,6 @@
   </dialog>
 
   <footer class="tei-footer">
-    <div class="tei-footer-logos" aria-label="Host institution and laboratory logos">
-      <img class="uob-logo" src="assets/tei-seminar/university-of-bristol-logo-cropped.png" alt="University of Bristol">
-      <img class="bdfi-logo" src="assets/tei-seminar/bdfi-logo-transparent.png" alt="Bristol Digital Futures Institute">
-      <img class="smart-logo" src="assets/tei-seminar/smart-internet-lab-transparent.png" alt="Smart Internet Lab">
-      <img class="hkust-logo" src="assets/tei-seminar/hkustgz-logo-final.png" alt="The Hong Kong University of Science and Technology (Guangzhou)">
-      <svg class="extend-logo" viewBox="0 0 388 80" role="img" aria-label="EXTEND Lab" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="extendFooterGradient" x1="0" y1="0" x2="388" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#e63b35"/>
-            <stop offset="0.24" stop-color="#f3b21a"/>
-            <stop offset="0.45" stop-color="#39a852"/>
-            <stop offset="0.68" stop-color="#1d89e4"/>
-            <stop offset="1" stop-color="#7c3ff2"/>
-          </linearGradient>
-        </defs>
-        <g fill="url(#extendFooterGradient)">
-          <path d="M0 8h52v12H12v14h34v12H12v14h40v12H0z"/>
-          <path d="M64 8h17l13 22 13-22h17l-22 32 22 32h-17L94 50 81 72H64l22-32z"/>
-          <path d="M136 8h56v12h-22v52h-12V20h-22z"/>
-          <path d="M204 8h52v12h-40v14h34v12h-34v14h40v12h-52z"/>
-          <path d="M268 8h12v64h-12z"/>
-          <path d="M304 8h12v64h-12z"/>
-          <path d="M280 8h14l22 64h-14z"/>
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M328 8h21c20 0 35 14 35 32s-15 32-35 32h-21zm12 12v40h8c13 0 23-8 23-20s-10-20-23-20z"/>
-        </g>
-      </svg>
-    </div>
     <strong>TEI 2026</strong> | The 1st Seminar of Towards Edge Intelligence
     <small>Organization team: Smart Internet Lab and BDFI, University of Bristol. EXTEND Lab, HKUST(GZ).</small>
   </footer>
