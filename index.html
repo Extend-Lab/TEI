@@ -13,8 +13,10 @@
     --blue: #0057a7;
     --deep: #072e5f;
     --aqua: #31a9c3;
-    --gold: #f2b84b;
-    --coral: #d75c4a;
+    --gold: #b08a00;
+    --gold-soft: #f3d36b;
+    --coral: #b01f2f;
+    --coral-dark: #8f1728;
     --paper: #f8fbfe;
     --line: rgba(13, 80, 139, 0.16);
     --shadow: 0 24px 60px rgba(8, 36, 66, 0.16);
@@ -32,6 +34,8 @@
     margin: 0;
     color: var(--ink);
     background:
+      radial-gradient(circle at 8% 7%, rgba(176, 31, 47, 0.12), transparent 18rem),
+      radial-gradient(circle at 32% 10%, rgba(176, 138, 0, 0.12), transparent 20rem),
       linear-gradient(90deg, rgba(0, 87, 167, 0.06) 0, rgba(0, 87, 167, 0.06) 1px, transparent 1px, transparent 88px),
       linear-gradient(rgba(0, 87, 167, 0.05) 0, rgba(0, 87, 167, 0.05) 1px, transparent 1px, transparent 88px),
       #edf5f9;
@@ -48,7 +52,7 @@
     top: 0;
     z-index: 20;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(7, 46, 95, 0.94);
+    background: linear-gradient(90deg, rgba(143, 23, 40, 0.96), rgba(7, 46, 95, 0.96) 42%, rgba(0, 87, 167, 0.96));
     box-shadow: 0 12px 28px rgba(5, 23, 44, 0.18);
     backdrop-filter: blur(14px);
   }
@@ -111,6 +115,10 @@
     min-height: 500px;
     padding: 4.65rem 1rem 2.25rem;
     background:
+      linear-gradient(rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.58)),
+      url("assets/tei-seminar/hero.png") right center / cover no-repeat,
+      radial-gradient(circle at 12% 12%, rgba(176, 31, 47, 0.14), transparent 18rem),
+      radial-gradient(circle at 33% 10%, rgba(176, 138, 0, 0.16), transparent 20rem),
       radial-gradient(circle at 88% 22%, rgba(49, 169, 195, 0.28), transparent 24rem),
       radial-gradient(circle at 92% 66%, rgba(0, 87, 167, 0.2), transparent 19rem),
       linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(232, 245, 251, 0.78));
@@ -122,7 +130,8 @@
     inset: 0;
     background:
       linear-gradient(120deg, transparent 0 24%, rgba(0, 87, 167, 0.16) 24% 24.4%, transparent 24.4% 52%, rgba(49, 169, 195, 0.22) 52% 52.4%, transparent 52.4%),
-      linear-gradient(30deg, transparent 0 34%, rgba(7, 46, 95, 0.12) 34% 34.5%, transparent 34.5% 66%, rgba(215, 92, 74, 0.12) 66% 66.5%, transparent 66.5%),
+      linear-gradient(30deg, transparent 0 34%, rgba(7, 46, 95, 0.12) 34% 34.5%, transparent 34.5% 66%, rgba(176, 31, 47, 0.12) 66% 66.5%, transparent 66.5%),
+      linear-gradient(152deg, transparent 0 42%, rgba(176, 138, 0, 0.12) 42% 42.4%, transparent 42.4%),
       radial-gradient(circle at 74% 18%, rgba(0, 87, 167, 0.32) 0 3px, transparent 4px),
       radial-gradient(circle at 86% 31%, rgba(49, 169, 195, 0.34) 0 3px, transparent 4px),
       radial-gradient(circle at 79% 49%, rgba(0, 87, 167, 0.28) 0 3px, transparent 4px),
@@ -307,7 +316,7 @@
   }
 
   .tei-button.primary {
-    background: var(--blue);
+    background: linear-gradient(90deg, var(--coral-dark), var(--blue));
     color: #fff;
   }
 
@@ -384,7 +393,7 @@
 
   .tei-stat strong {
     display: block;
-    color: var(--blue);
+    color: var(--coral);
     font-size: 1.72rem;
     line-height: 1;
   }
@@ -421,7 +430,7 @@
     border: 5px solid #fff;
     border-radius: 999px;
     background: #dceaf3;
-    box-shadow: 0 0 0 2px rgba(0, 87, 167, 0.24), 0 18px 28px rgba(8, 36, 66, 0.14);
+    box-shadow: 0 0 0 2px rgba(176, 138, 0, 0.36), 0 18px 28px rgba(8, 36, 66, 0.14);
   }
 
   .tei-card-body {
@@ -450,54 +459,18 @@
     line-height: 1.58;
   }
 
-  .tei-card details {
-    display: block;
-  }
-
-  .tei-card summary {
-    display: block;
-    cursor: pointer;
-    list-style: none;
-  }
-
-  .tei-card summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .tei-card summary .tei-card-body {
-    padding-bottom: 0.9rem;
-  }
-
-  .tei-expand-hint {
+  .tei-speaker-modal-button {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
     margin-top: 0.8rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
     color: var(--blue);
     font-size: 0.78rem;
     font-weight: 850;
-  }
-
-  .tei-card details[open] .tei-expand-hint i {
-    transform: rotate(180deg);
-  }
-
-  .tei-expanded {
-    padding: 0 1rem 1.1rem;
-    border-top: 1px solid var(--line);
-    background: linear-gradient(180deg, #f8fbfe, #fff);
-  }
-
-  .tei-expanded h4 {
-    margin: 1rem 0 0.38rem;
-    color: #0d355f;
-    font-size: 0.94rem;
-    letter-spacing: 0;
-  }
-
-  .tei-expanded p {
-    font-size: 0.84rem;
-    line-height: 1.62;
+    cursor: pointer;
   }
 
   .tei-agenda,
@@ -511,7 +484,7 @@
 
   .tei-program-grid {
     display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(18rem, 1fr);
+    grid-template-columns: minmax(0, 2.55fr) minmax(13.5rem, 0.62fr);
     column-gap: 1rem;
     row-gap: 1rem;
     align-items: start;
@@ -530,7 +503,7 @@
     justify-content: space-between;
     gap: 0.8rem;
     padding: 0.78rem 1rem;
-    background: var(--deep);
+    background: linear-gradient(90deg, var(--coral-dark), var(--deep) 48%, var(--blue));
     color: #fff;
     font-size: 0.9rem;
     font-weight: 900;
@@ -538,7 +511,7 @@
   }
 
   .tei-session-title.pre {
-    background: #e7f4fa;
+    background: linear-gradient(90deg, rgba(176, 138, 0, 0.18), #e7f4fa);
     color: #0d355f;
   }
 
@@ -564,7 +537,7 @@
   }
 
   .tei-time {
-    color: var(--blue);
+    color: var(--coral);
     font-weight: 900;
   }
 
@@ -582,8 +555,8 @@
     display: inline-flex;
     margin-bottom: 0.38rem;
     padding: 0.28rem 0.48rem;
-    background: #e7f4fa;
-    color: #0d5798;
+    background: rgba(176, 138, 0, 0.18);
+    color: #7c6200;
     border-radius: 999px;
     font-size: 0.72rem;
     font-weight: 900;
@@ -615,6 +588,29 @@
     margin: 0;
     color: var(--muted);
     line-height: 1.65;
+  }
+
+  .tei-call-panel p + p {
+    margin-top: 0.9rem;
+  }
+
+  .tei-venue-photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 650 / 330;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    object-fit: cover;
+    box-shadow: 0 14px 32px rgba(8, 36, 66, 0.12);
+  }
+
+  .tei-map {
+    width: 100%;
+    min-height: 17rem;
+    margin-top: 1rem;
+    border: 0;
+    border-radius: 6px;
+    box-shadow: 0 14px 32px rgba(8, 36, 66, 0.1);
   }
 
   .tei-icon-list {
@@ -652,6 +648,16 @@
     line-height: 1.26;
   }
 
+  .tei-icon-item:nth-child(1) i,
+  .tei-icon-item:nth-child(4) i {
+    color: var(--coral);
+  }
+
+  .tei-icon-item:nth-child(2) i,
+  .tei-icon-item:nth-child(3) i {
+    color: var(--gold);
+  }
+
   .tei-icon-item span {
     display: block;
     margin-top: 0.24rem;
@@ -669,23 +675,25 @@
 
   .tei-host-card {
     display: grid;
-    grid-template-columns: 4.25rem 1fr;
-    gap: 0.78rem;
-    align-items: center;
-    padding: 0.78rem;
+    justify-items: center;
+    gap: 0.52rem;
+    align-items: start;
+    padding: 0.78rem 0.72rem;
     border: 1px solid var(--line);
+    border-top: 4px solid var(--gold);
     border-radius: 6px;
     background: #fff;
     box-shadow: 0 14px 32px rgba(8, 36, 66, 0.08);
+    text-align: center;
   }
 
   .tei-host-card img {
-    width: 4rem;
-    height: 5.3rem;
+    width: 7rem;
+    height: 8.7rem;
     object-fit: cover;
     border-radius: 999px;
     border: 3px solid #fff;
-    box-shadow: 0 0 0 2px rgba(0, 87, 167, 0.24);
+    box-shadow: 0 0 0 2px rgba(176, 138, 0, 0.32);
   }
 
   .tei-host-card h3 {
@@ -699,14 +707,14 @@
   .tei-host-card p {
     margin: 0;
     color: var(--muted);
-    font-size: 0.86rem;
+    font-size: 0.82rem;
     line-height: 1.42;
   }
 
   .tei-footer {
     padding: 2.2rem 1rem;
-    border-top: 1px solid var(--line);
-    background: #f8fbfe;
+    border-top: 1px solid rgba(176, 138, 0, 0.32);
+    background: linear-gradient(90deg, rgba(176, 31, 47, 0.06), #f8fbfe 35%, rgba(176, 138, 0, 0.08));
     color: var(--muted);
     text-align: center;
     font-size: 0.86rem;
@@ -714,6 +722,85 @@
 
   .tei-footer strong {
     color: #0d355f;
+  }
+
+  .tei-footer small {
+    display: block;
+    margin-top: 0.55rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .tei-modal {
+    width: min(860px, calc(100% - 2rem));
+    max-height: min(82vh, 760px);
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 32px 90px rgba(8, 36, 66, 0.32);
+  }
+
+  .tei-modal::backdrop {
+    background: rgba(7, 46, 95, 0.62);
+    backdrop-filter: blur(4px);
+  }
+
+  .tei-modal-shell {
+    display: grid;
+    max-height: min(82vh, 760px);
+    grid-template-rows: auto minmax(0, 1fr);
+    background: #fff;
+  }
+
+  .tei-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(90deg, var(--coral-dark), var(--deep) 54%, var(--blue));
+    color: #fff;
+  }
+
+  .tei-modal-head h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.25;
+  }
+
+  .tei-modal-close {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .tei-modal-body {
+    overflow-y: auto;
+    padding: 1.2rem;
+  }
+
+  .tei-modal-body h3 {
+    margin: 1.1rem 0 0.42rem;
+    color: #0d355f;
+    font-size: 1rem;
+  }
+
+  .tei-modal-body h3:first-child {
+    margin-top: 0;
+  }
+
+  .tei-modal-body p {
+    margin: 0 0 0.88rem;
+    color: #355872;
+    font-size: 0.95rem;
+    line-height: 1.7;
   }
 
   @media (max-width: 920px) {
@@ -797,18 +884,17 @@
     }
 
     .tei-host-card {
-      grid-template-columns: 4.25rem 1fr;
+      grid-template-columns: 1fr;
     }
 
     .tei-host-card img {
-      width: 4rem;
-      height: 5.3rem;
+      width: 7rem;
+      height: 8.7rem;
     }
   }
 
   @media print {
-    .tei-topbar,
-    .tei-hero-actions {
+    .tei-topbar {
       display: none;
     }
 
@@ -847,7 +933,6 @@
             <div class="tei-hero-actions">
               <a class="tei-button primary" href="#posters"><i class="bi bi-easel2"></i> PhD Poster Call</a>
               <a class="tei-button" href="#agenda"><i class="bi bi-calendar3"></i> View Agenda</a>
-              <button class="tei-button" type="button" onclick="window.print()"><i class="bi bi-printer"></i> Print</button>
             </div>
           </div>
 
@@ -904,26 +989,13 @@
             </div>
           </article>
           <article class="tei-card">
-            <details>
-              <summary>
-                <img class="tei-speaker-photo" src="assets/tei-seminar/walid-saad.jpg" alt="Prof. Walid Saad">
-                <div class="tei-card-body">
-                  <h3>Prof. Walid Saad</h3>
-                  <p class="tei-affiliation">Virginia Tech</p>
-                  <p>Rolls Royce Commonwealth Professor in Digital Twin Technology and IEEE Fellow working on wireless networks, machine learning, game theory, semantic communications and cyber-physical systems.</p>
-                  <span class="tei-expand-hint"><i class="bi bi-chevron-down"></i> View title, abstract and bio</span>
-                </div>
-              </summary>
-              <div class="tei-expanded">
-                <h4>Title</h4>
-                <p>Why AI Still Can't Handle the Physical World: AGI-Native Wireless Systems for Physical AI</p>
-                <h4>Abstract</h4>
-                <p>Artificial intelligence has transformed many sectors, yet today's AI tools, including deep learning and generative AI, still struggle when embedded into physical systems such as robots, drones and vehicles operating under real-world physical laws. This talk addresses three intertwined challenges: limited ability to handle unseen and out-of-domain scenarios, lack of first-principle solutions for physical agents navigating the real world, and the need for pervasive connectivity to support physical AI tasks at scale.</p>
-                <p>The talk introduces artificial general intelligence (AGI)-native wireless systems, a wireless architecture and framework for supporting the intelligence and communications needs of physical AI systems. It explores a fusion of wireless systems, digital twins, neuroscience and AI through an AGI architecture based on perception, world model and action-planning, with cognitive capabilities such as reasoning, planning, imagination and deep thinking. The talk discusses semantic communication for physical AI, a world model architecture inspired by thinking fast and slow, and test-time scaling laws that help physical AI agents handle unforeseen real-world scenarios.</p>
-                <h4>Bio</h4>
-                <p>Walid Saad received his PhD degree from the University of Oslo in 2010. He is currently the Rolls Royce Commonwealth Professor in Digital Twin Technology, a Professor in the Department of Electrical and Computer Engineering, and a founding faculty member of the Institute for Advanced Computing at Virginia Tech, where he leads the Network intelligEnce, Wireless, and Security laboratory. His research interests include wireless networks, machine learning, game theory, quantum communications and learning, security, UAVs, semantic communications, cyber-physical systems and network science. Dr. Saad is a Fellow of the IEEE and Editor-in-Chief of the IEEE Transactions on Machine Learning in Communications and Networking.</p>
-              </div>
-            </details>
+            <img class="tei-speaker-photo" src="assets/tei-seminar/walid-saad.jpg" alt="Prof. Walid Saad">
+            <div class="tei-card-body">
+              <h3>Prof. Walid Saad</h3>
+              <p class="tei-affiliation">Virginia Tech</p>
+              <p>Rolls Royce Commonwealth Professor in Digital Twin Technology and IEEE Fellow working on wireless networks, machine learning, game theory, semantic communications and cyber-physical systems.</p>
+              <button class="tei-speaker-modal-button" type="button" data-modal-target="walid-modal"><i class="bi bi-window"></i> View title, abstract and bio</button>
+            </div>
           </article>
           <article class="tei-card">
             <img class="tei-speaker-photo" src="assets/tei-seminar/kin-k-leung.jpg" alt="Prof. Kin K. Leung">
@@ -1019,12 +1091,13 @@
           <div class="tei-call-panel">
             <h3>Poster Session</h3>
             <p>The seminar program includes poster sessions and networking during the morning coffee break and lunch break. Up to 15 posters will be included in the program. Submissions related to edge intelligence, multi-agent systems, sensing, computation, communication, wireless AI, federated learning and network intelligence are welcome.</p>
+            <p>Please send your poster to Mr Haokai Yang at <a href="mailto:haokai.yang@bristol.ac.uk">haokai.yang@bristol.ac.uk</a> with the title <strong>TEI + Name</strong>, and attach your poster. We will send the invitation letter once your posters are selected. Deadline is <strong>15th May 2026</strong>.</p>
           </div>
           <div class="tei-icon-list">
             <div class="tei-icon-item"><i class="bi bi-easel2"></i><div><strong>Present research</strong><span>Share ongoing or completed PhD work with seminar participants.</span></div></div>
             <div class="tei-icon-item"><i class="bi bi-diagram-3"></i><div><strong>Meet researchers</strong><span>Connect with invited speakers, hosts and peers across institutions.</span></div></div>
             <div class="tei-icon-item"><i class="bi bi-lightbulb"></i><div><strong>Gain feedback</strong><span>Discuss methods, challenges and next steps in an informal setting.</span></div></div>
-            <div class="tei-icon-item"><i class="bi bi-calendar-check"></i><div><strong>Submission details</strong><span>Poster submission instructions will be announced by the TEI team.</span></div></div>
+            <div class="tei-icon-item"><i class="bi bi-calendar-check"></i><div><strong>Submission details</strong><span>Email Mr Haokai Yang with title TEI + Name, attach your poster, and submit by 15th May 2026.</span></div></div>
           </div>
         </div>
       </div>
@@ -1041,12 +1114,21 @@
         </div>
         <div class="tei-venue-grid">
           <div class="tei-call-panel">
+            <img class="tei-venue-photo" src="assets/tei-seminar/bdfi.jpg" alt="Bristol Digital Futures Institute">
             <h3>Location</h3>
             <p>Bristol Digital Futures Institute, University of Bristol, 65 Avon St, Bristol, UK BS2 0PZ.</p>
+            <p><a href="https://www.bristol.ac.uk/bristol-digital-futures-institute/" target="_blank" rel="noopener">Visit the Bristol Digital Futures Institute website</a></p>
           </div>
           <div class="tei-call-panel">
             <h3>Travel Note</h3>
             <p>The venue is reachable via Bristol Airport, or by train from London Paddington to Bristol in approximately 1.5 hours.</p>
+            <iframe
+              class="tei-map"
+              title="Google map showing BDFI, University of Bristol"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Bristol%20Digital%20Futures%20Institute%2C%2065%20Avon%20St%2C%20Bristol%20BS2%200PZ&output=embed">
+            </iframe>
           </div>
         </div>
       </div>
@@ -1054,8 +1136,52 @@
 
   </main>
 
+  <dialog class="tei-modal" id="walid-modal" aria-labelledby="walid-modal-title">
+    <div class="tei-modal-shell">
+      <div class="tei-modal-head">
+        <h2 id="walid-modal-title">Prof. Walid Saad</h2>
+        <button class="tei-modal-close" type="button" data-modal-close aria-label="Close Walid Saad details"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="tei-modal-body">
+        <h3>Title</h3>
+        <p>Why AI Still Can't Handle the Physical World: AGI-Native Wireless Systems for Physical AI</p>
+
+        <h3>Abstract</h3>
+        <p>Artificial intelligence (AI) revolutionized multiple sectors ranging from healthcare to entertainment. Remarkably, despite this progress, today's AI tools, including deep learning and generative AI (e.g., large language models), still fail when embedded into physical systems, such as robots, drones, or vehicles, that operate under the physical laws of the real world, as evidenced by recent high-profile incidents involving Waymo, GM's Cruise, and Tesla Autopilot. Indeed, the success of physical AI systems is contingent upon addressing three intertwined challenges: (a) Limited ability of existing AI frameworks to handle unseen and out-of-domain scenarios, (b) Lack of first-principle solutions that allow a physical AI agent to navigate the real world governed by physical laws, and (c) Need for pervasive connectivity to support physical AI tasks, such as inference and communications, at scale. In this talk, we address these challenges by pioneering a novel wireless system architecture and framework, dubbed artificial general intelligence (AGI)-native wireless systems, that supports the intelligence and communications needs of physical AI systems. We demonstrate how a strategic fusion of wireless systems, digital twins, neuroscience, and AI can catalyze a paradigm shift in both wireless and AI technologies through an AGI architecture founded on three components: a) perception, b) world model, and c) action-planning, imbued with human-like cognitive capabilities including reasoning, planning, imagination, and deep thinking. Grounding each component in concrete results, we first demonstrate how perception enables effective semantic communication systems that address the connectivity needs of physical AI at scale, and will be a staple of 6G systems and beyond. We then introduce a novel world model architecture built on Kahneman's thinking fast and slow principle, demonstrating its effectiveness for AI generalization and long-term reasoning, and its ability to enable data-efficient link scheduling with significant age of information gains in wireless vehicular networks, and robust generalization to unseen network conditions such as varying vehicle densities and link blockage scenarios. Finally, integrating all three components, we introduce a fundamental test-time scaling law that allows physical AI agents to handle unforeseen real-world scenarios. We particularly demonstrate how the first principle of active inference instills a survival instinct via surprise minimization into the physical AI agents, enabling them to reason and generalize beyond their training data. We conclude with a discussion of the exciting opportunities in this space, and how this vision transforms telecom operators from communication providers into intelligence providers for physical AI.</p>
+
+        <h3>Bio</h3>
+        <p>Walid Saad (S'07, M'10, SM'15, F'19) received his Ph.D degree from the University of Oslo, Norway in 2010. He is currently the Rolls Royce Commonwealth Professor in Digital Twin Technology, a Professor at the Department of Electrical and Computer Engineering, and a founding faculty of the Institute for Advanced Computing at Virginia Tech, where he leads the Network intelligEnce, Wireless, and Security (NEWS) laboratory. His research interests include wireless networks (5G/6G/beyond), machine learning, game theory, quantum communications/learning, security, UAVs, semantic communications, cyber-physical systems, and network science. Dr. Saad is a Fellow of the IEEE. He is also the recipient of the NSF CAREER award in 2013, the AFOSR summer faculty fellowship in 2014, and the Young Investigator Award from the Office of Naval Research (ONR) in 2015. He was the (co-)author of twelve conference best paper awards at IEEE WiOpt in 2009, ICIMP in 2010, IEEE WCNC in 2012, IEEE PIMRC in 2015, IEEE SmartGridComm in 2015, EuCNC in 2017, IEEE GLOBECOM (2018 and 2020), IFIP NTMS in 2019, IEEE ICC (2020 and 2022), and IEEE QCE in 2023. He is the recipient of the 2015 and 2022 Fred W. Ellersick Prize from the IEEE Communications Society, of the IEEE Communications Society Marconi Prize Award in 2023, and of the IEEE Communications Society Award for Advances in Communication in 2023. He was also a co-author of the papers that received the IEEE Communications Society Young Author Best Paper award in 2019, 2021, and 2023. He received the 2025 Jacob A. Lutz III Eminent Scholar award from Virginia Tech. Dr. Saad was an IEEE Distinguished Lecturer in 2019-2020. He has been annually listed in the Clarivate Web of Science Highly Cited Researcher List since 2019. He is the Editor-in-Chief for the IEEE Transactions on Machine Learning in Communications and Networking.</p>
+      </div>
+    </div>
+  </dialog>
+
   <footer class="tei-footer">
     <strong>TEI 2026</strong> | The 1st Seminar of Towards Edge Intelligence
+    <small>Organization team: BDFI, University of Bristol. EXTEND Lab, HKUST(GZ). Contact: Xiaolan.liu@bristol.ac.uk. Jiadongyu@hkust-gz.edu.cn.</small>
   </footer>
+  <script>
+    document.querySelectorAll("[data-modal-target]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const modal = document.getElementById(button.dataset.modalTarget);
+        if (modal && typeof modal.showModal === "function") {
+          modal.showModal();
+        }
+      });
+    });
+
+    document.querySelectorAll("[data-modal-close]").forEach((button) => {
+      button.addEventListener("click", () => {
+        button.closest("dialog")?.close();
+      });
+    });
+
+    document.querySelectorAll(".tei-modal").forEach((modal) => {
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          modal.close();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
