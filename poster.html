@@ -39,6 +39,11 @@
     top: 1rem;
     right: 1rem;
     z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.55rem;
+    max-width: min(26rem, calc(100vw - 2rem));
   }
 
   .poster-toolbar button {
@@ -53,6 +58,25 @@
     font-weight: 800;
     box-shadow: 0 14px 34px rgba(6, 36, 91, 0.26);
     cursor: pointer;
+  }
+
+  .poster-toolbar button:disabled {
+    cursor: progress;
+    opacity: 0.68;
+  }
+
+  .poster-toolbar .save-jpeg {
+    background: var(--bristol-red-dark);
+  }
+
+  .poster-toolbar-status {
+    flex-basis: 100%;
+    min-height: 1.2rem;
+    color: var(--navy);
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-align: right;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.74);
   }
 
   .poster-sheet {
@@ -715,11 +739,22 @@
       box-shadow: none;
     }
   }
+
+  body.export-mode .poster-toolbar {
+    display: none;
+  }
+
+  body.export-mode .poster-sheet {
+    box-shadow: none;
+  }
 </style>
 </head>
 <body>
   <div class="poster-toolbar">
-    <button type="button" onclick="window.print()"><i class="bi bi-printer"></i> Print Poster</button>
+    <button type="button" onclick="window.print()"><i class="bi bi-printer"></i> Print</button>
+    <button type="button" data-save-format="png"><i class="bi bi-filetype-png"></i> Save PNG</button>
+    <button class="save-jpeg" type="button" data-save-format="jpeg"><i class="bi bi-filetype-jpg"></i> Save JPEG</button>
+    <div class="poster-toolbar-status" aria-live="polite"></div>
   </div>
 
   <main class="poster-sheet" aria-label="TEI promotion poster">
@@ -809,5 +844,136 @@
 
     <div class="wave" aria-hidden="true"></div>
   </main>
+  <script>
+    (() => {
+      if (new URLSearchParams(window.location.search).has("export")) {
+        document.body.classList.add("export-mode");
+      }
+
+      const EXPORT_WIDTH = 2480;
+      const EXPORT_NAME = "tei-2026-poster";
+      const statusEl = document.querySelector(".poster-toolbar-status");
+      const saveButtons = Array.from(document.querySelectorAll("[data-save-format]"));
+
+      const getExportDetails = (format) => {
+        const isJpeg = format === "jpeg";
+        return {
+          extension: isJpeg ? "jpg" : "png",
+          mimeType: isJpeg ? "image/jpeg" : "image/png",
+          pickerTypes: [{
+            description: isJpeg ? "JPEG image" : "PNG image",
+            accept: {
+              [isJpeg ? "image/jpeg" : "image/png"]: isJpeg ? [".jpg", ".jpeg"] : [".png"]
+            }
+          }]
+        };
+      };
+
+      const setStatus = (message) => {
+        statusEl.textContent = message;
+      };
+
+      const setBusy = (busy) => {
+        saveButtons.forEach((button) => {
+          button.disabled = busy;
+        });
+      };
+
+      const chooseSaveFile = async (format) => {
+        const details = getExportDetails(format);
+
+        if (!window.showSaveFilePicker) {
+          return null;
+        }
+
+        return window.showSaveFilePicker({
+          suggestedName: `${EXPORT_NAME}-${EXPORT_WIDTH}px.${details.extension}`,
+          types: details.pickerTypes,
+          excludeAcceptAllOption: false
+        });
+      };
+
+      const saveBlob = async (blob, format, fileHandle) => {
+        const details = getExportDetails(format);
+
+        if (fileHandle) {
+          const writable = await fileHandle.createWritable();
+          await writable.write(blob);
+          await writable.close();
+          return "chosen location";
+        }
+
+        await new Promise((resolve) => {
+          const link = document.createElement("a");
+          const url = URL.createObjectURL(blob);
+          link.href = url;
+          link.download = `${EXPORT_NAME}-${EXPORT_WIDTH}px.${details.extension}`;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          setTimeout(() => {
+            URL.revokeObjectURL(url);
+            resolve();
+          }, 0);
+        });
+
+        return "Downloads";
+      };
+
+      const fetchLocalExport = async (format) => {
+        const url = `poster-export?format=${encodeURIComponent(format)}&width=${EXPORT_WIDTH}&_=${Date.now()}`;
+        const response = await fetch(url, { cache: "no-store" });
+
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new Error("local export service is not running. Start: python3 poster_export_server.py");
+          }
+
+          const message = await response.text();
+          throw new Error(message || `local export service returned HTTP ${response.status}.`);
+        }
+
+        return response.blob();
+      };
+
+      const savePoster = async (format) => {
+        let fileHandle = null;
+
+        try {
+          fileHandle = await chooseSaveFile(format);
+        } catch (error) {
+          if (error.name === "AbortError") {
+            setStatus("Save canceled.");
+            return;
+          }
+          console.error(error);
+          setStatus(`Save failed: ${error.message || "the browser could not open the save dialog."}`);
+          return;
+        }
+
+        const outputHeight = Math.round(EXPORT_WIDTH * 297 / 210);
+
+        setBusy(true);
+        setStatus(`Rendering ${format.toUpperCase()} with local export service...`);
+
+        try {
+          const blob = await fetchLocalExport(format);
+          const destination = await saveBlob(blob, format, fileHandle);
+          setStatus(`Saved ${format.toUpperCase()} (${EXPORT_WIDTH} x ${outputHeight}) to ${destination}.`);
+        } catch (error) {
+          console.error(error);
+          setStatus(`Save failed: ${error.message || "please use a local web server and try again."}`);
+        } finally {
+          setBusy(false);
+        }
+      };
+
+      saveButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          savePoster(button.dataset.saveFormat);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
